@@ -2,8 +2,8 @@
   <div class="d-flex flex-grow-1 flex-row">
     <v-navigation-drawer
       v-model="menuDrawer"
-      floating
       :light="true"
+      :mobile-breakpoint="0"
       absolute
       class="elevation-1 rounded"
     >
@@ -152,15 +152,6 @@ export default {
       this[`isLoading${count++}`] = false
       if (count === 4) this.clear()
     }, 400)
-
-    if (this.menuDrawer) {
-      this.$refs.main.style.marginLeft = '280px'
-      this.menuDrawer = true
-    }
-    else {
-      this.$refs.main.style.marginLeft = '0'
-      this.menuDrawer = false
-    }
   },
   beforeDestroy() {
     this.clear()
@@ -170,7 +161,6 @@ export default {
       clearInterval(this.loadingInterval)
     },
     eventClickHandler(e) {
-      console.log('[eventClickHandler]', e)
       this.openTask = true
       this.taskMeta = e.event
     }

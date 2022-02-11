@@ -21,7 +21,7 @@
               <v-icon small>mdi-logout-variant</v-icon>
             </v-btn>
 
-            <v-spacer class="d-none d-lg-block"></v-spacer>
+            <v-spacer class="d-block d-lg-block"></v-spacer>
 
             <v-app-bar-nav-icon @click.stop="toggleDrawer()"></v-app-bar-nav-icon>
 

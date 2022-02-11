@@ -1,5 +1,5 @@
 <template>
-  <v-card class="min-w-0">
+  <v-card class="min-w-0 h-full">
     <h3 class="headline font-weight-regular text-center px-2 py-2">Unteraufgaben</h3>
 
     <v-divider></v-divider>
@@ -140,6 +140,6 @@ export default {
 }
 .tasks-wrapper {
     overflow-y: auto;
-    height: calc(100vh - 365px);
+    height: calc(100% - 155px);
 }
 </style>

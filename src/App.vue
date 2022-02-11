@@ -62,14 +62,6 @@ export default {
       return layout + 'Layout'
     }
   },
-  mounted() {
-
-    if (window.innerWidth < 768) {
-      console.log('[width]', window.innerWidth)
-      this.$store.dispatch('app/toggleDrawer')
-    }
-
-  },
   head: {
     link: [
       // adds config/icons into the html head tag

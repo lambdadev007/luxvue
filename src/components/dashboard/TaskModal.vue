@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="100%">
-      <v-card>
+      <v-card class="h-full">
         <v-toolbar
           elevation="2"
         >
@@ -33,17 +33,43 @@
           </div>
         </v-toolbar>
         
-        <v-sheet color="#f2f2f2">
-          <v-row class="flex-grow-0 mx-2">
-            <v-col cols="12" lg="3">
+        <v-sheet color="#f2f2f2" class="modal-body">
+          <v-row class="flex-grow-0 mx-2 h-full">
+            <v-col
+              cols="12"
+              md="4"
+              lg="4"
+              xl="3"
+              class="h-full"
+            >
               <todo-list :tasks="incompleteTasks" @edit-task="$emit('edit-task', $event)" />
             </v-col>
-            <v-col cols="12" lg="5">
-              <icon-scroller></icon-scroller>
-              <chat-box></chat-box>
+            <v-col
+              cols="12"
+              md="8"
+              lg="8"
+              xl="5"
+              class="h-full"
+            >
+              <div class="h-full">
+                <div class="icon-scroller-wrapper overflow-auto">
+                  <icon-scroller></icon-scroller>
+                </div>
+                <div class="past-task-wrapper mt-2">
+                  <past-task-alt class="d-xl-none"></past-task-alt>
+                </div>
+                <div class="chat-box-wrapper overflow-auto mt-2">
+                  <chat-box></chat-box>
+                </div>
+              </div>
             </v-col>
-            <v-col cols="12" lg="4">
-              <past-task></past-task>
+            <v-col
+              cols="0"
+              lg="0"
+              xl="4"
+              class="d-sm-none d-lg-none d-xl-block"
+            >
+              <past-task-alt></past-task-alt>
             </v-col>  
           </v-row>
         </v-sheet>
@@ -56,6 +82,7 @@
 import TodoList from './TodoList.vue'
 import IconScroller from './IconScroller.vue'
 import PastTask from './PastTask'
+import PastTaskAlt from './PastTaskAlt'
 import ChatBox from './ChatBox'
 import { mapGetters } from 'vuex'
 import moment from 'moment'
@@ -64,7 +91,7 @@ export default {
   components: {
     TodoList,
     IconScroller,
-    PastTask,
+    PastTaskAlt,
     ChatBox
   },
   props: {
@@ -114,5 +141,21 @@ export default {
 .icon-btn {
   width: 50px !important;
   height: 50px !important;
+}
+.modal-body {
+  height: calc(100% - 64px);
+}
+.chat-box-wrapper {
+  height: calc(100% - 205px);
+}
+@media screen and (max-width: 1366px) {
+  .chat-box-wrapper {
+    height: calc(100% - 300px - 160px);
+  }
+}
+</style>
+<style>
+.v-dialog.v-dialog--active.v-dialog--persistent {
+  height: 90% !important;
 }
 </style>

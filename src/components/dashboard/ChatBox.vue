@@ -1,22 +1,20 @@
 <template>
-  <div>
-    <!-- channel messages -->
-    <div class="channel-page">
-      <div id="messages" ref="messages" class="messages mx-2">
-        <transition-group name="list">
-          <channel-message
-            v-for="message in messages"
-            :key="message.id"
-            :message="message"
-            :user="user"
-            class="my-4 d-flex"
-          />
-        </transition-group>
-      </div>
+  <!-- channel messages -->
+  <div class="channel-page">
+    <div id="messages" ref="messages" class="messages mx-2">
+      <transition-group name="list">
+        <channel-message
+          v-for="message in messages"
+          :key="message.id"
+          :message="message"
+          :user="user"
+          class="my-4 d-flex"
+        />
+      </transition-group>
+    </div>
 
-      <div class="input-box pa-2">
-        <input-box :channel="channel" @send-message="sendMessage" />
-      </div>
+    <div class="input-box pa-2">
+      <input-box :channel="channel" @send-message="sendMessage" />
     </div>
   </div>
 </template>
@@ -139,8 +137,7 @@ export default {
   flex-direction: column;
   background: url("/images/chat/chat-bg-2.png");
   position: relative;
-  height: calc(100vh - 400px);
-  margin-top: 15px;
+  height: 100%;
 
   .messages {
     flex-grow: 1;
